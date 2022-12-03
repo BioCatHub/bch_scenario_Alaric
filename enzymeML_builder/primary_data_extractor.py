@@ -78,6 +78,7 @@ class PrimaryDataExtractor:
         newarray_reference = np.array(array_reference)
         df_test = pd.DataFrame(newarray, columns=['ref1', 'ref2', 'ref3'])
         df_test1 = pd.DataFrame(newarray_reference, columns=['sample1', 'sample2', 'sample3'])
+    
         dff_final = pd.concat([df_test,df_test1], axis=1)
 
         return dff_final
@@ -117,6 +118,3 @@ class PrimaryDataExtractor:
         return df_x_values
 
 
-#dd = EnzymeMLBuilder("ads").build_dataframe()
-
-#print(dd)

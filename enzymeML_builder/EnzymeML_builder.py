@@ -1,8 +1,8 @@
 import libcombine 
 import pandas as pd
-from primary_data_extractor import PrimaryDataExtractor
+#from primary_data_extractor import PrimaryDataExtractor
 import json
-#from enzymeML_builder.primary_data_extractor import PrimaryDataExtractor
+from enzymeML_builder.primary_data_extractor import PrimaryDataExtractor
 
 
 class EnzymeMLBuilder(PrimaryDataExtractor):
@@ -17,9 +17,11 @@ class EnzymeMLBuilder(PrimaryDataExtractor):
         
         measurements_list = []
 
-        measurement_references = self.annotate_measurement(self.build_measurement("ref"), "reference")
-        measurement_samples = self.annotate_measurement(self.build_measurement("sample"), "samples")
+        #measurement_references = self.annotate_measurement(self.build_measurement("ref"), "reference")
+        #measurement_samples = self.annotate_measurement(self.build_measurement("sample"), "samples")
 
+        measurement_references = self.annotate_measurement(self.build_measurement("ref"), "samples")
+        measurement_samples = self.annotate_measurement(self.build_measurement("sample"), "reference")
         
 
         measurements = {"measurements":[measurement_references, measurement_samples]}
@@ -47,7 +49,7 @@ class EnzymeMLBuilder(PrimaryDataExtractor):
 
         archive=libcombine.CombineArchive()
         archive.addFile("./biocathub.json", "biocathub.json",libcombine.KnownFormats_lookupFormat("json"))
-        archive.writeToFile("AlaricnoEnzml1"+str(self.concentration)+"mmolL.omex")
+        archive.writeToFile("A540nm/AlaricnoEnzml"+str(self.concentration)+"mmolL.omex")
 
         
     
@@ -104,9 +106,8 @@ class EnzymeMLBuilder(PrimaryDataExtractor):
         #experiment1["experimentalData"] = measurements
 
 
-
-columns = ["Column3", "Column4"]
-concentrations = [22, 33]
+columns = ["Column3", "Column4","Column5","Column6"]
+concentrations = [0, 1,2,3]
 
 for i, j in zip(columns, concentrations):
 
