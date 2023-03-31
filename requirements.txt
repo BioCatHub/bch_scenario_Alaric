@@ -1,0 +1,6 @@
+matplotlib
+seaborn
+pandas
+python-libcombine
+jupyter
+openpyxl
