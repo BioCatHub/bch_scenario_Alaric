@@ -37,8 +37,10 @@ class PrimaryDataExtractor:
 
         samples = self.extract_data_from_xlsx()
         x_values = self.extract_x_values()
-        #result = pd.concat([x_values, samples], axis=1)
-        #return result
+        print(x_values)
+        result = pd.concat([x_values, samples], axis=1)
+        print(result)
+        return result
 
 
     def extract_data_from_xlsx(self):
@@ -101,7 +103,7 @@ class PrimaryDataExtractor:
 
         df_concat = pd.concat([df_test, df_test1], axis=1)
 
-        print(df_concat)
+        return df_concat
 
         
             
@@ -133,9 +135,9 @@ class PrimaryDataExtractor:
 
         
         df_x_values = pd.DataFrame(x_values, columns=["x_values"])
-        print(df_x_values)
+
+        return df_x_values
 
 
-
-new = PrimaryDataExtractor("Thermo plate reader/ABTS_reaction.csv", "columns")
-new.build_dataframe()
+#new = PrimaryDataExtractor("any", "Column1")
+#new.build_dataframe()

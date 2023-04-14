@@ -2,7 +2,7 @@ import libcombine
 import pandas as pd
 #from primary_data_extractor import PrimaryDataExtractor
 import json
-from enzymeML_builder.primary_data_extractor import PrimaryDataExtractor
+from enzymeML_builder.primary_data_extractor_thermo import PrimaryDataExtractor
 
 
 class EnzymeMLBuilder(PrimaryDataExtractor):
@@ -41,7 +41,7 @@ class EnzymeMLBuilder(PrimaryDataExtractor):
         json_file["experimentalData"] = measurements
         '''
         template["title"] = "test"
-        template["vessel"] = {"type":"96 well plate", "volume":"100", "unit":"uL", "others":[]}
+        template["vessel"] = {"type":"96 well plateeeeeee", "volume":"100", "unit":"uL", "others":[]}
         template["experimentalData"] = measurements
         with open("biocathub.json", "w") as outfile:
             bch_model_json = json.dumps(template)

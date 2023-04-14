@@ -118,3 +118,7 @@ class PrimaryDataExtractor:
         return df_x_values
 
 
+new = PrimaryDataExtractor("any", "Column1")
+new.build_dataframe()
+
+
