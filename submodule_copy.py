@@ -1,6 +1,8 @@
 from libcombine import *
 import json
 import pandas as pd
+from pathlib import Path
+
 
 
 class importer:
@@ -31,7 +33,7 @@ class importer:
         data_frame_dict = {}
 
 
-        bch_model = self.import_enzymeml(self.path)
+        bch_model = self.import_enzymeml()
         print("model is",bch_model)
 
         if self.check_x_values(data_frame_dict):
@@ -107,7 +109,7 @@ class importer:
                 x_values.append(x)
         return x_values
 
-    def import_enzymeml(self, path):
+    def import_enzymeml(self):
         """
         Imports EnzymeML document and extracts the BioCatHub data model
 
@@ -127,7 +129,7 @@ class importer:
         payload = {}
 
         archive = CombineArchive()
-        archive.initializeFromArchive(path)
+        archive.initializeFromArchive(self.path)
         experiment = False
         for i in range(archive.getNumEntries()):
             entry = archive.getEntry(i)
@@ -198,6 +200,6 @@ class importer:
         return y_values
 
 
-document1 = importer('A540nm/AlaricnoEnzm1mmolL.omex').build_data_frame()
+document1 = importer('A540nm/AlaricnoEnzml1mmolL.omex').build_data_frame()
 print(document1)
 
