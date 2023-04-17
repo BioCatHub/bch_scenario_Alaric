@@ -17,11 +17,11 @@ class EnzymeMLBuilder(PrimaryDataExtractor):
         
         measurements_list = []
 
-        #measurement_references = self.annotate_measurement(self.build_measurement("ref"), "reference")
-        #measurement_samples = self.annotate_measurement(self.build_measurement("sample"), "samples")
+        measurement_references = self.annotate_measurement(self.build_measurement("ref"), "reference")
+        measurement_samples = self.annotate_measurement(self.build_measurement("sample"), "samples")
 
-        measurement_references = self.annotate_measurement(self.build_measurement("ref"), "samples")
-        measurement_samples = self.annotate_measurement(self.build_measurement("sample"), "reference")
+        #measurement_references = self.annotate_measurement(self.build_measurement("ref"), "samples")
+        #measurement_samples = self.annotate_measurement(self.build_measurement("sample"), "reference")
         
 
         measurements = {"measurements":[measurement_references, measurement_samples]}
@@ -105,10 +105,15 @@ class EnzymeMLBuilder(PrimaryDataExtractor):
 
         #experiment1["experimentalData"] = measurements
 
-
+'''
 columns = ["Column3", "Column4","Column5","Column6"]
 concentrations = [0, 1,2,3]
 
 for i, j in zip(columns, concentrations):
 
     data = EnzymeMLBuilder("j", i, j).build_measurements_list()
+
+'''
+
+
+#data = EnzymeMLBuilder("Thermo plate reader/ABTS_reaction.csv","Column3", 0).build_measurements_list()

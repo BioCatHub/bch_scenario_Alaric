@@ -68,17 +68,23 @@ class PrimaryDataExtractor:
 
         list= []
 
-        for i in na_deleted:
-            test = re.search("^Iteration", i)
-            if test:
-                pass
-            elif test==None:
-                list.append(i)
-            else:
-        #        except Exception as error:
-                    print("sorting error")
-                    raise
+        try:
+
+            for i in na_deleted:
+                test = re.search("^Iteration", i)
+                if test:
+                    pass
+                elif test==None:
+                    list.append(i)
+                else:
+            #        except Exception as error:
+                        print("sorting error")
+                        raise
+        except Exception as err:
+            print("******************************************************************",err)
             
+        for i in na_deleted:
+            list.append(i)
         liste1 = list[0:180]
 
         array = np.array(liste1)
@@ -104,11 +110,6 @@ class PrimaryDataExtractor:
         df_concat = pd.concat([df_test, df_test1], axis=1)
 
         return df_concat
-
-        
-            
-        
-
 
 
     def extract_x_values(self):
@@ -139,5 +140,3 @@ class PrimaryDataExtractor:
         return df_x_values
 
 
-#new = PrimaryDataExtractor("any", "Column1")
-#new.build_dataframe()
