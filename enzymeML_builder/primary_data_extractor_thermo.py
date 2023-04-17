@@ -60,7 +60,7 @@ class PrimaryDataExtractor:
         df = pd.read_csv(r"Thermo plate reader/ABTS_reaction.csv", delimiter=r';')
         
         rows_deleted = df.drop(df.index[0:4])
-        first_column = rows_deleted["Column2"]
+        first_column = rows_deleted[self.column]
         na_cleared = first_column.dropna()
         na_deleted = first_column.dropna()
 

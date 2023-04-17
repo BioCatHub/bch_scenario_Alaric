@@ -34,7 +34,7 @@ class importer:
 
 
         bch_model = self.import_enzymeml()
-        print("model is",bch_model)
+        #print("model is",bch_model)
 
         if self.check_x_values(data_frame_dict):
             pass
@@ -53,11 +53,12 @@ class importer:
         for i in sample_measurements:
             data_frame_dict["sample_" + str(sample_measurements.index(i))] = i
 
-        print(data_frame_dict)
+        #print(data_frame_dict)
         #print("measurements", measurements)
         #data_frame_dict.update(measurements)
 
         df = pd.DataFrame(data_frame_dict)
+        #print("der df ist", df)
         return df
 
     def check_x_values(self, data_frame_dict):
@@ -134,7 +135,7 @@ class importer:
         for i in range(archive.getNumEntries()):
             entry = archive.getEntry(i)
             if entry.getLocation() == "biocathub.json":  # TODO #8
-                print(entry.getLocation())
+                #print(entry.getLocation())
                 archive.extractEntry(entry.getLocation(), "biocathub.json")
                 with open("biocathub.json") as extract:
                     experiment = json.load(extract)
@@ -200,6 +201,6 @@ class importer:
         return y_values
 
 
-document1 = importer('A540nm/AlaricnoEnzml1mmolL.omex').build_data_frame()
-print(document1)
+#document1 = importer('A540nm/AlaricnoEnzml1mmolL.omex').build_data_frame()
+#print(document1)
 
